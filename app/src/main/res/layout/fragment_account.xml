@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BottomFragments.AccountFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/garet_heavy"
+                android:text="Manage Account"
+                android:textColor="@color/dark_late_gray"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:id="@+id/name_ll"
+                android:layout_below="@id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/garet_book"
+                    android:text="Hello,"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/garet_book"
+                    android:text="Full Name"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="25sp" />
+
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/name_ll"
+                android:src="@drawable/man"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:id="@+id/profile_pic"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Photo"
+                android:layout_below="@id/profile_pic"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_alignStart="@id/profile_pic"
+                android:layout_alignEnd="@id/profile_pic"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:backgroundTint="@color/primary_color"
+                android:drawableEnd="@drawable/ic_menu_gallery"
+                android:drawableTint="@color/white_smoke"
+                android:fontFamily="@font/garet_book"
+                android:id="@+id/openGallery"/>
+
+            <View
+                android:id="@+id/hr"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/cardview_dark_background"
+                android:layout_below="@id/openGallery"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/other"
+                android:layout_below="@id/hr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/garet_heavy"
+                android:text="Other Information"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/dark_late_gray"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:id="@+id/other_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/other"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_below="@id/hr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/garet_book"
+                    android:text="Email"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Out"
+                android:layout_below="@id/other_ll"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:backgroundTint="@android:color/transparent"
+                android:drawableEnd="@drawable/sign_out_24"
+                android:drawableTint="@color/primary_color"
+                android:textColor="@color/primary_color"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/garet_book"
+                android:id="@+id/logOutBtn"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

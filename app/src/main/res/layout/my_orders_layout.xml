@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_smoke"
+    android:padding="20dp"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/order_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order ID: "
+            android:fontFamily="@font/garet_heavy"
+            android:textColor="@color/dark_late_gray"
+            android:textSize="13sp"
+            />
+
+        <TextView
+            android:id="@+id/fullname"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:fontFamily="@font/garet_heavy"
+            android:textColor="@color/dark_late_gray"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number"
+            android:fontFamily="@font/garet_heavy"
+            android:textColor="@color/dark_late_gray"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:fontFamily="@font/garet_heavy"
+            android:textColor="#7A7A7A"
+            android:textSize="13sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_toEndOf="@id/left"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/order_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Status"
+            android:fontFamily="@font/garet_book"
+            android:textColor="@color/white_smoke"
+            android:textSize="8sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:backgroundTint="#7a7a7a"
+            android:background="@drawable/status_bg"
+            />
+
+        <TextView
+            android:id="@+id/total_payment"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.0"
+            android:fontFamily="@font/garet_heavy"
+            android:textColor="@color/dark_late_gray"
+            android:textSize="25sp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/hr"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/dark_late_gray"
+        android:layout_below="@id/left"
+        android:layout_marginTop="25dp"/>
+
+    <LinearLayout
+        android:gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hr"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/view_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Details"
+            android:textSize="12sp"
+            android:backgroundTint="@color/dark_late_gray"
+            android:fontFamily="@font/garet_heavy"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

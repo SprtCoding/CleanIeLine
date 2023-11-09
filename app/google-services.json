@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "291288478817",
+    "project_id": "cleaninline",
+    "storage_bucket": "cleaninline.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291288478817:android:33181c9ed6349ef55de620",
+        "android_client_info": {
+          "package_name": "com.example.myapplication10101010"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADXyKjcfMdK3G0a_F6gb62DwGAA9xe19w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

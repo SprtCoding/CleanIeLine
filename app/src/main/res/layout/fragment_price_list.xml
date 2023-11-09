@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="35dp"
+    tools:context=".Admin.Fragments.PriceListFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price List"
+                android:fontFamily="@font/garet_heavy"
+                android:textSize="22sp"
+                android:drawablePadding="10dp"
+                android:textColor="@color/dark_late_gray"
+                app:drawableStartCompat="@drawable/price_tag_24"
+                app:drawableTint="@color/dark_late_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/dark_late_gray"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wash_dry_per_kg"
+                android:textColor="@color/dark_late_gray"
+                android:textSize="22sp"
+                android:fontFamily="@font/garet_book"/>
+
+            <TextView
+                android:id="@+id/kg_tv"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kilogram - 0"
+                android:fontFamily="@font/garet_book"
+                android:textSize="13sp"
+                android:padding="15dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:textColor="@color/dark_late_gray"
+                app:drawableTint="@color/dark_late_gray"
+                app:drawableEndCompat="@drawable/pen_square_18" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detergent_fabcon"
+                android:textColor="@color/dark_late_gray"
+                android:textSize="22sp"
+                android:fontFamily="@font/garet_book"/>
+
+            <TextView
+                android:id="@+id/customer_provided"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Customer Provided - 0"
+                android:fontFamily="@font/garet_book"
+                android:textSize="13sp"
+                android:padding="15dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:textColor="@color/dark_late_gray"
+                app:drawableTint="@color/dark_late_gray"
+                app:drawableEndCompat="@drawable/pen_square_18" />
+
+            <TextView
+                android:id="@+id/liquid"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Liquid - 0"
+                android:fontFamily="@font/garet_book"
+                android:textSize="13sp"
+                android:padding="15dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:textColor="@color/dark_late_gray"
+                app:drawableTint="@color/dark_late_gray"
+                app:drawableEndCompat="@drawable/pen_square_18" />
+
+            <TextView
+                android:id="@+id/powder"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Powder - 0"
+                android:fontFamily="@font/garet_book"
+                android:textSize="13sp"
+                android:padding="15dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:textColor="@color/dark_late_gray"
+                app:drawableTint="@color/dark_late_gray"
+                app:drawableEndCompat="@drawable/pen_square_18" />
+
+            <TextView
+                android:id="@+id/select_fabcon"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fabcon - 0"
+                android:fontFamily="@font/garet_book"
+                android:textSize="13sp"
+                android:padding="15dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:textColor="@color/dark_late_gray"
+                app:drawableTint="@color/dark_late_gray"
+                app:drawableEndCompat="@drawable/pen_square_18" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bed Linens/Other Garments"
+                android:textColor="@color/dark_late_gray"
+                android:textSize="22sp"
+                android:fontFamily="@font/garet_book"/>
+
+            <TextView
+                android:id="@+id/pillow_case"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Beedsheet/Towel/Pillow Cases - 0"
+                android:fontFamily="@font/garet_book"
+                android:textSize="13sp"
+                android:padding="15dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:textColor="@color/dark_late_gray"
+                app:drawableTint="@color/dark_late_gray"
+                app:drawableEndCompat="@drawable/pen_square_18" />
+
+            <TextView
+                android:id="@+id/blanket"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comforter/Bulky Blanket - 0"
+                android:fontFamily="@font/garet_book"
+                android:textSize="13sp"
+                android:padding="15dp"
+                android:drawablePadding="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:textColor="@color/dark_late_gray"
+                app:drawableTint="@color/dark_late_gray"
+                app:drawableEndCompat="@drawable/pen_square_18" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Save"
+                android:textAllCaps="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/garet_heavy"
+                android:backgroundTint="@color/primary_color"
+                android:textColor="@color/white_smoke"
+                android:id="@+id/save_btn"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

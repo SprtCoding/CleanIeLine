@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BottomFragments.CheckOuts.Payment">
+
+    <ImageView
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/back_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/arrow_left_24"
+        android:contentDescription="back-icon"
+        app:tint="@color/dark_late_gray" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/back_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated Payment"
+                android:textSize="24sp"
+                android:textColor="@color/dark_late_gray"
+                android:fontFamily="@font/garet_heavy"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/dark_late_gray"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Payment Type"
+                android:textColor="@color/dark_late_gray"
+                android:textSize="18sp"
+                android:fontFamily="@font/garet_book"/>
+
+            <RadioGroup
+                android:id="@+id/payment_rg"
+                android:gravity="start"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/cod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COD"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/garet_heavy"
+                    android:textColor="@color/dark_late_gray"
+                    android:buttonTint="@color/dark_late_gray"/>
+
+                <RadioButton
+                    android:id="@+id/g_cash"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="G-Cash"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/garet_heavy"
+                    android:textColor="@color/dark_late_gray"
+                    android:buttonTint="@color/dark_late_gray"/>
+
+                <RadioButton
+                    android:id="@+id/card"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Credit/Debit Card"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/garet_heavy"
+                    android:textColor="@color/dark_late_gray"
+                    android:buttonTint="@color/dark_late_gray"/>
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/cod_ll"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enter your Mobile Number"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/garet_book"/>
+
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/mobile_no_et"
+                    android:padding="15dp"
+                    android:background="@drawable/round_back_dark_blue5_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:inputType="phone"
+                    android:hint="Mobile No"
+                    android:maxLength="11"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/garet_book"
+                    app:drawableEndCompat="@drawable/phone_flip_18"
+                    app:drawableTint="@color/dark_late_gray" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated Payment Summary"
+                android:textSize="22sp"
+                android:textColor="@color/dark_late_gray"
+                android:fontFamily="@font/garet_heavy"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/dark_late_gray"
+                android:layout_marginTop="10dp"/>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="15dp"
+                    android:background="@drawable/round_back_dark_blue5_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:text="Sub Total"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/garet_book" />
+
+                <TextView
+                    android:id="@+id/subTotal"
+                    android:padding="15dp"
+                    android:background="@drawable/round_back_dark_blue5_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:text="0"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/garet_book" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="15dp"
+                    android:background="@drawable/round_back_dark_blue5_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:text="Delivery Fee"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/garet_book" />
+
+                <TextView
+                    android:id="@+id/delivery_fee"
+                    android:padding="15dp"
+                    android:background="@drawable/round_back_dark_blue5_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:text="0"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/garet_book" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_back_dark_blue5_15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="15dp"
+                    android:background="@drawable/round_back_dark_blue5_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:text="Total"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/garet_book" />
+
+                <TextView
+                    android:id="@+id/total_payment"
+                    android:padding="15dp"
+                    android:background="@drawable/round_back_dark_blue5_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="15dp"
+                    android:text="0"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/dark_late_gray"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/garet_book" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="20dp"
+                android:id="@+id/place_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Placed Transaction"
+                android:padding="15dp"
+                android:textAllCaps="true"
+                android:backgroundTint="@color/primary_color"
+                android:fontFamily="@font/garet_heavy"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
