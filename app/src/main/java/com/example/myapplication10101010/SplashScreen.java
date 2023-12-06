@@ -44,9 +44,7 @@ public class SplashScreen extends AppCompatActivity {
 
         Handler handler = new Handler();
 
-        handler.postDelayed(() -> {
-            checkUser();
-        }, 2000);
+        handler.postDelayed(this::checkUser, 2000);
 
     }
     private void checkUser() {

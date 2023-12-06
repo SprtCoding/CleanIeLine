@@ -22,7 +22,7 @@
             android:src="@drawable/drying"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/logo"
             android:layout_alignTop="@id/logo"
@@ -36,10 +36,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:fontFamily="@font/garet_heavy"
+                android:fontFamily="@font/nunito_black"
                 android:text="Clean In Line"
                 android:layout_marginStart="10dp"
-                android:textSize="22sp"
+                android:textSize="25sp"
                 android:textColor="@color/primary_color"
                 android:layout_marginLeft="10dp" />
 
@@ -47,11 +47,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:fontFamily="@font/nunito_black"
+                android:fontFamily="@font/nunito_semi_bold"
                 android:text="Laundry"
                 android:textAllCaps="true"
                 android:layout_marginStart="10dp"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:textColor="@color/primary_color"
                 android:layout_marginLeft="10dp" />
 
@@ -59,11 +59,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:fontFamily="@font/nunito_black"
+                android:fontFamily="@font/nunito_semi_bold"
                 android:text="Shop"
                 android:textAllCaps="true"
                 android:layout_marginStart="10dp"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:textColor="@color/primary_color"
                 android:layout_marginLeft="10dp" />
 
@@ -80,7 +80,7 @@
         android:text="@string/sign_in"
         android:layout_marginStart="10dp"
         android:textSize="30sp"
-        android:textColor="@color/white_smoke"
+        android:textColor="@color/dark_late_gray"
         android:layout_marginLeft="10dp" />
 
     <EditText
@@ -125,7 +125,7 @@
         android:fontFamily="@font/garet_book"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:textColor="@color/black"
+        android:textColor="@color/dark_late_gray"
         />
 
     <com.google.android.material.button.MaterialButton
@@ -152,6 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garet_book"
+        android:textColor="@color/dark_late_gray"
         android:text="Don't have an account?"/>
 
     <TextView
@@ -162,7 +163,7 @@
         android:text="Create Account"
         android:layout_marginStart="10dp"
         android:textStyle="bold"
-        android:textColor="@color/white_smoke"
+        android:textColor="@color/dark_late_gray"
         android:fontFamily="@font/garet_heavy"
         android:layout_toRightOf="@id/dont_txt"
         android:layout_marginLeft="10dp" />

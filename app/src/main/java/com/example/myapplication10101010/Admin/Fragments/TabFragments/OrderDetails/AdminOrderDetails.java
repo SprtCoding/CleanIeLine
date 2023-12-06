@@ -14,7 +14,9 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,15 +40,17 @@ import java.util.Map;
 public class AdminOrderDetails extends AppCompatActivity {
     private TextView close_btn, order_ID, order_status, pickup_address_tv, time,
             pickup_time_tv, delivery_address_tv, subTotal, delivery_fee, total_payment, services_type,
-            edit_btn, save_btn, customer_provided_tv, detergent_tv, fabcon_tv;
+            edit_btn, save_btn, customer_provided_tv, detergent_tv, fabcon_tv, washDryKg, beedSheetKg
+            , comforterKg;
     private EditText delivery_instructions_tv, wash_dry_kg, bed_linens_kg, comforter_kg;
+    private LinearLayout editLL;
     private CollectionReference bookedColRef, userTokenColRef, notificationColRef, priceListColRef;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
     private String BookedID, user_name, user_id, user_token;
     private ProgressDialog loading;
-    double sub_totals = 0, bedSheetPricePerKg = 0, comforterPricePerKg = 0, washDryPricePerKg = 0, fabconPrice = 0, liquidPrice = 0, powderPrice = 0, customerProvidedPrice = 0,
-    total_wash_dry = 0;
+    double sub_totals = 0, bedSheetPricePerKg = 0, comforterPricePerKg = 0, washDryPricePerKg = 0, fabconPrice = 0, liquidPrice = 0, powderPrice = 0, customerProvidedPrice = 0, other_totals = 0,
+    total_wash_dry = 0, total_bedLinens = 0, total_comforter = 0;
     AlertDialog.Builder saveAlertBuilder;
 
     @Override
@@ -78,8 +82,6 @@ public class AdminOrderDetails extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
 
-        setTextWatcher();
-
         loading = new ProgressDialog(this);
         loading.setTitle("Loading");
         loading.setMessage("Please wait...");
@@ -99,6 +101,8 @@ public class AdminOrderDetails extends AppCompatActivity {
         edit_btn.setOnClickListener(view -> {
             wash_dry_kg.setEnabled(true);
             wash_dry_kg.requestFocus();
+            bed_linens_kg.setEnabled(true);
+            comforter_kg.setEnabled(true);
         });
 
         save_btn.setOnClickListener(view -> {
@@ -109,33 +113,40 @@ public class AdminOrderDetails extends AppCompatActivity {
                         loading.show();
                         Handler handler = new Handler();
                         Runnable runnable = () -> {
-                            if(!TextUtils.isEmpty(wash_dry_kg.getText().toString())) {
-                                if (total_wash_dry != 0) {
-                                    // Subtract the previous total_price_perKG
-                                    sub_totals -= total_wash_dry;
-                                }
-                                total_wash_dry += washDryPricePerKg * Double.parseDouble(wash_dry_kg.getText().toString());
-                                sub_totals += total_wash_dry;
-                                Toast.makeText(this, ""+sub_totals, Toast.LENGTH_SHORT).show();
+                            if(TextUtils.isEmpty(wash_dry_kg.getText().toString())) {
+                                Toast.makeText(AdminOrderDetails.this, "Enter Wash and Dry Kilogram!", Toast.LENGTH_SHORT).show();
+                                wash_dry_kg.requestFocus();
+                                loading.dismiss();
+                            } else if(TextUtils.isEmpty(bed_linens_kg.getText().toString())) {
+                                Toast.makeText(AdminOrderDetails.this, "Enter Bedsheet & towels Kilogram!", Toast.LENGTH_SHORT).show();
+                                bed_linens_kg.requestFocus();
+                                loading.dismiss();
+                            } else if(TextUtils.isEmpty(comforter_kg.getText().toString())) {
+                                Toast.makeText(AdminOrderDetails.this, "Enter Comforter/Bulky Blanket Kilogram!", Toast.LENGTH_SHORT).show();
+                                comforter_kg.requestFocus();
+                                loading.dismiss();
                             } else {
-                                Toast.makeText(AdminOrderDetails.this, "Enter Kilogram!", Toast.LENGTH_SHORT).show();
-                            }
+                                double currentWashDryKg = Double.parseDouble(wash_dry_kg.getText().toString());
+                                double currentBedLinensKg = Double.parseDouble(bed_linens_kg.getText().toString());
+                                double currentComforterKg = Double.parseDouble(comforter_kg.getText().toString());
+                                double currentWashDryCost = washDryPricePerKg * currentWashDryKg;
+                                double currentBedLinenCost = bedSheetPricePerKg * currentBedLinensKg;
+                                double currentComforterCost = comforterPricePerKg * currentComforterKg;
 
-//                            Map<String, Object> map = new HashMap<>();
-//                            map.put("OrderStatus", "Updated");
-//                            map.put("Kilogram", Double.parseDouble(wash_dry_kg.getText().toString()));
-//                            map.put("BedSheetWeight", Double.parseDouble(bed_linens_kg.getText().toString()));
-//                            map.put("ComforterWeight", Double.parseDouble(comforter_kg.getText().toString()));
-//
-//                            bookedColRef.document(BookedID)
-//                                    .update(map)
-//                                    .addOnSuccessListener(unused -> {
-//                                        Toast.makeText(this,  "Sent successfully to " + user_name + ".", Toast.LENGTH_SHORT).show();
-//                                        sendNotification(user_id, 200);
-//                                        setNotification();
-//                                        loading.dismiss();
-//                                    })
-//                                    .addOnFailureListener(e -> Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
+                                // Update total_wash_dry with the current cost
+                                total_wash_dry = currentWashDryCost;
+                                total_bedLinens = currentBedLinenCost;
+                                total_comforter = currentComforterCost;
+
+                                // Update sub_totals with the current total_wash_dry
+                                double sub_totals_washDry = total_wash_dry;
+                                double sub_totals_bedLinens = total_bedLinens;
+                                double sub_totals_comforter = total_comforter;
+
+                                sub_totals = other_totals + sub_totals_washDry + sub_totals_bedLinens + sub_totals_comforter;
+
+                                updateOrder(sub_totals);
+                            }
                         };
                         handler.postDelayed(runnable, 3000);
                     })
@@ -151,23 +162,33 @@ public class AdminOrderDetails extends AppCompatActivity {
         });
     }
 
-    private void setTextWatcher() {
-        wash_dry_kg.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    private void updateOrder(double subTotals) {
+        String type = services_type.getText().toString();
+        double deliveryFee = 40;
+        if(type.equals("Drop Off")) {
+            deliveryFee = 0;
+        }
+        double totalCost = subTotals + deliveryFee;
 
-            }
+        Map<String, Object> map = new HashMap<>();
+        map.put("OrderStatus", "Order Accepted");
+        map.put("Kilogram", Double.parseDouble(wash_dry_kg.getText().toString()));
+        map.put("BedSheetWeight", Double.parseDouble(bed_linens_kg.getText().toString()));
+        map.put("ComforterWeight", Double.parseDouble(comforter_kg.getText().toString()));
+        map.put("DeliveryFee", deliveryFee);
+        map.put("SubTotal", subTotals);
+        map.put("TotalCost", totalCost);
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+        bookedColRef.document(BookedID)
+                .update(map)
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(this,  "Sent successfully to " + user_name + ".", Toast.LENGTH_SHORT).show();
+                    sendNotification(user_id, totalCost);
+                    setNotification(totalCost);
+                    finish();
+                    loading.dismiss();
+                })
+                .addOnFailureListener(e -> Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     @SuppressLint("SetTextI18n")
@@ -196,12 +217,16 @@ public class AdminOrderDetails extends AppCompatActivity {
 
                         if(status.equals("Order Completed")) {
                             order_status.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(97, 178, 236)));
+                            editLL.setVisibility(View.GONE);
                         }else if(status.equals("Processing")) {
                             order_status.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(164, 164, 164)));
+                            editLL.setVisibility(View.VISIBLE);
                         }else if(status.equals("Order Accepted")) {
                             order_status.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(49, 149, 91)));
+                            editLL.setVisibility(View.GONE);
                         }else if(status.equals("Rejected")) {
                             order_status.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(191, 64, 64)));
+                            editLL.setVisibility(View.GONE);
                         }
 
                         // Check if the date is today
@@ -233,6 +258,9 @@ public class AdminOrderDetails extends AppCompatActivity {
                         wash_dry_kg.setText(String.valueOf(wash_dry_kgs));
                         bed_linens_kg.setText(String.valueOf(beedsheets_kgs));
                         comforter_kg.setText(String.valueOf(comforter_kgs));
+                        washDryKg.setText(wash_dry_kgs + " kg");
+                        beedSheetKg.setText(beedsheets_kgs + " kg");
+                        comforterKg.setText(comforter_kgs + " kg");
 
                         // Get your drawable for the end (right side)
                         @SuppressLint("UseCompatLoadingForDrawables") Drawable drawableEndCheck = getResources().getDrawable(R.drawable.check_circle_18);
@@ -243,31 +271,24 @@ public class AdminOrderDetails extends AppCompatActivity {
                             drawableEndCheck.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
                             customer_provided_tv.setCompoundDrawablesWithIntrinsicBounds(null, null, drawableEndCheck, null);
 
-                            sub_totals += customerProvidedPrice;
+                            other_totals += customerProvidedPrice;
 
                         }else {
                             int tintColor = getResources().getColor(R.color.red);
                             drawableEndWrong.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
                             customer_provided_tv.setCompoundDrawablesWithIntrinsicBounds(null, null, drawableEndWrong, null);
                         }
-                        if(liquid_detergent) {
+                        if(liquid_detergent || powder_detergent) {
                             int tintColor = getResources().getColor(R.color.primary_color);
                             drawableEndCheck.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
                             detergent_tv.setCompoundDrawablesWithIntrinsicBounds(null, null, drawableEndCheck, null);
 
-                            sub_totals += liquidPrice;
-
-                        }else {
-                            int tintColor = getResources().getColor(R.color.red);
-                            drawableEndWrong.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
-                            detergent_tv.setCompoundDrawablesWithIntrinsicBounds(null, null, drawableEndWrong, null);
-                        }
-                        if(powder_detergent) {
-                            int tintColor = getResources().getColor(R.color.primary_color);
-                            drawableEndCheck.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
-                            detergent_tv.setCompoundDrawablesWithIntrinsicBounds(null, null, drawableEndCheck, null);
-
-                            sub_totals += powderPrice;
+                            if(liquid_detergent) {
+                                other_totals += liquidPrice;
+                            }
+                            if(powder_detergent) {
+                                other_totals += powderPrice;
+                            }
 
                         }else {
                             int tintColor = getResources().getColor(R.color.red);
@@ -279,7 +300,7 @@ public class AdminOrderDetails extends AppCompatActivity {
                             drawableEndCheck.setColorFilter(tintColor, PorterDuff.Mode.SRC_IN);
                             fabcon_tv.setCompoundDrawablesWithIntrinsicBounds(null, null, drawableEndCheck, null);
 
-                            sub_totals += fabconPrice;
+                            other_totals += fabconPrice;
 
                         }else {
                             int tintColor = getResources().getColor(R.color.red);
@@ -292,14 +313,14 @@ public class AdminOrderDetails extends AppCompatActivity {
                 .addOnFailureListener(e -> Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private void setNotification() {
+    private void setNotification(double totalCost) {
         // Get the current date and time
         Date currentDate = new Date();
 
         Map<String, Object> map = new HashMap<>();
         map.put("to", user_id);
         map.put("from", mAuth.getCurrentUser().getUid());
-        map.put("Details", "Your transaction is being updated by admin.\nYour total payment now is " + convertToPhilippinePesoD(200));
+        map.put("Details", "Your transaction is being updated by admin.\nYour total payment now is " + convertToPhilippinePesoD(totalCost));
         map.put("Date", currentDate);
 
         notificationColRef.add(map)
@@ -353,7 +374,11 @@ public class AdminOrderDetails extends AppCompatActivity {
         subTotal = findViewById(R.id.subTotal);
         delivery_fee = findViewById(R.id.delivery_fee);
         total_payment = findViewById(R.id.total_payment);
+        editLL = findViewById(R.id.editLL);
         delivery_instructions_tv = findViewById(R.id.delivery_instructions_tv);
+        washDryKg = findViewById(R.id.washDryKg);
+        beedSheetKg = findViewById(R.id.beedSheetKg);
+        comforterKg = findViewById(R.id.comforterKg);
     }
 
     public static String convertToPhilippinePesoD(double amount) {

@@ -58,7 +58,7 @@ public class DropOffServices extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DocumentReference priceDocRef;
     private FirebaseFirestore db;
-    private double deliveryFee = 40, total_payment = 0;
+    private double deliveryFee = 0, total_payment = 0;
     double finalKg;
 
     @Override

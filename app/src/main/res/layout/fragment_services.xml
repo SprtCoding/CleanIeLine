@@ -21,23 +21,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="35sp"
+            android:textSize="32sp"
             android:textColor="#5372FF"
             android:textAlignment="center"
-            android:text="Clean in Line Price List"
+            android:text="Clean in Line\nPrice List"
             android:textStyle="bold"
-            android:fontFamily="@font/garet_heavy"/>
+            android:fontFamily="@font/nunito_black"/>
 
         <TextView
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="#273238"
+            android:textColor="@color/dark_late_gray"
             android:textAlignment="center"
             android:text="Maximum of 8 kilos per load"
             android:textStyle="bold"
-            android:fontFamily="@font/garet_book"/>
+            android:fontFamily="@font/nunito_semi_bold"/>
 
         <androidx.cardview.widget.CardView
             android:layout_marginTop="20dp"
@@ -62,7 +62,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center_vertical"
-                    android:padding="10dp">
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -80,7 +81,7 @@
                         android:text="0 Per Kilos"
                         android:textColor="@color/white_smoke"
                         android:fontFamily="@font/garet_book"
-                        android:textSize="20sp"/>
+                        android:textSize="16sp"/>
 
                 </LinearLayout>
 
@@ -111,7 +112,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center_vertical"
-                    android:padding="10dp">
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -129,7 +131,7 @@
                         android:text="0 Per Kilos"
                         android:textColor="@color/white_smoke"
                         android:fontFamily="@font/garet_book"
-                        android:textSize="20sp"/>
+                        android:textSize="16sp"/>
 
                 </LinearLayout>
 
@@ -160,7 +162,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center_vertical"
-                    android:padding="10dp">
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -178,7 +181,7 @@
                         android:text="0 Per Kilos"
                         android:textColor="@color/white_smoke"
                         android:fontFamily="@font/garet_book"
-                        android:textSize="20sp"/>
+                        android:textSize="16sp"/>
 
                 </LinearLayout>
 
@@ -209,7 +212,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center_vertical"
-                    android:padding="10dp">
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -227,7 +231,7 @@
                         android:text="0 Per Kilos"
                         android:textColor="@color/white_smoke"
                         android:fontFamily="@font/garet_book"
-                        android:textSize="20sp"/>
+                        android:textSize="16sp"/>
 
                 </LinearLayout>
 
@@ -258,7 +262,8 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center_vertical"
-                    android:padding="10dp">
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -276,7 +281,7 @@
                         android:text="0 Per Kilos"
                         android:textColor="@color/white_smoke"
                         android:fontFamily="@font/garet_book"
-                        android:textSize="20sp"/>
+                        android:textSize="16sp"/>
 
                 </LinearLayout>
 

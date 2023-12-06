@@ -26,7 +26,7 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="CLEAN IN LINE "
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/black"
+        android:textColor="@color/dark_late_gray"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -37,5 +37,5 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/garet_book"
         android:text="Wash Your Troubles Away"
-        android:textColor="@color/black" />
+        android:textColor="@color/dark_late_gray" />
 </LinearLayout>

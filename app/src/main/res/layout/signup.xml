@@ -23,7 +23,7 @@
         android:lineHeight="35dp"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:textColor="@color/black" />
+        android:textColor="@color/dark_late_gray" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,6 +32,7 @@
         android:text="Clean in Line"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/garet_book"
+        android:textColor="@color/dark_late_gray"
         android:layout_marginTop="5dp"/>
 
     <EditText
@@ -138,6 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/garet_book"
+            android:textColor="@color/dark_late_gray"
             android:text="Already Registered?"/>
 
         <TextView
@@ -148,7 +150,7 @@
             android:text="Log in here"
             android:layout_marginStart="10dp"
             android:textStyle="bold"
-            android:textColor="@color/white_smoke"
+            android:textColor="@color/dark_late_gray"
             android:fontFamily="@font/garet_heavy"
             android:layout_toRightOf="@id/dont_txt"
             android:layout_marginLeft="10dp" />

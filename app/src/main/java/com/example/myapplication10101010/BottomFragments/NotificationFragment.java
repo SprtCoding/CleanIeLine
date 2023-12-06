@@ -4,62 +4,87 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication10101010.Admin.Fragments.Adapters.NotificationAdapter;
+import com.example.myapplication10101010.Admin.Fragments.Model.NotificationList;
 import com.example.myapplication10101010.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NotificationFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class NotificationFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public NotificationFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NotificationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NotificationFragment newInstance(String param1, String param2) {
-        NotificationFragment fragment = new NotificationFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    View v;
+    private RecyclerView notificationRV;
+    private LinearLayout no_data_ll;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+    private FirebaseFirestore db;
+    private CollectionReference notificationColRef;
+    NotificationAdapter notificationAdapter;
+    List<NotificationList> notificationLists;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notification, container, false);
+        v = inflater.inflate(R.layout.fragment_notification, container, false);
+        _init();
+
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        notificationLists = new ArrayList<>();
+
+        LinearLayoutManager llm = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        notificationRV.setHasFixedSize(true);
+        notificationRV.setLayoutManager(llm);
+
+        db = FirebaseFirestore.getInstance();
+        notificationColRef = db.collection("NOTIFICATIONS");
+
+        if(mUser != null) {
+            notificationColRef.whereEqualTo("to", mUser.getUid())
+                    .addSnapshotListener((value, error) -> {
+                        if(error == null && value != null) {
+                            if(!value.isEmpty()) {
+                                notificationLists.clear();
+
+                                for(QueryDocumentSnapshot doc : value) {
+                                    notificationLists.add(new NotificationList(
+                                            doc.getString("from"),
+                                            doc.getString("to"),
+                                            doc.getString("Details"),
+                                            doc.getDate("Date")
+                                    ));
+                                }
+
+                                notificationAdapter = new NotificationAdapter(getContext(), notificationLists);
+                                notificationRV.setAdapter(notificationAdapter);
+                            }else {
+                                notificationRV.setVisibility(View.GONE);
+                                no_data_ll.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+
+        return v;
+    }
+
+    private void _init() {
+        notificationRV = v.findViewById(R.id.notif_rv);
+        no_data_ll = v.findViewById(R.id.no_data_ll);
     }
 }

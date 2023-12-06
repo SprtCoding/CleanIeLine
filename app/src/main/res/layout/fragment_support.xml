@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:textColor="#273238"
+        android:textColor="@color/dark_late_gray"
         android:text="Contact Us"
         android:fontFamily="@font/garet_heavy"/>
 
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="#273238"
+        android:textColor="@color/dark_late_gray"
         android:text="+639633563672"
         android:fontFamily="@font/garet_book"/>
 
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="#273238"
+        android:textColor="@color/dark_late_gray"
         android:text="emmanvaldevieso09@gmail.com"
         android:fontFamily="@font/garet_book"/>
 
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="#273238"
+        android:textColor="@color/dark_late_gray"
         android:text="potpotgio260@gmail.com"
         android:fontFamily="@font/garet_book"/>
 
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:textColor="#273238"
+        android:textColor="@color/dark_late_gray"
         android:text="acostajazper@gmail.com"
         android:fontFamily="@font/garet_book"/>
 

@@ -19,4 +19,12 @@
     <string name="detergent_fabcon"><![CDATA[Detergent & Fabcon]]></string>
     <string name="wash_dry_per_kg"><![CDATA[Wash & Dry per Kg]]></string>
     <string name="bedsheet_towels_kg"><![CDATA[Bedsheet & towels kg]]></string>
+    <string name="your_order">Your Order</string>
+    <string name="we_collect">We Collect</string>
+    <string name="we_clean">We Clean</string>
+    <string name="we_deliver">We Deliver</string>
+    <string name="your_order_desc">Your order collected by admin.</string>
+    <string name="we_collect_desc">We collect your laundry.</string>
+    <string name="we_clean_desc">We clean your laundry.</string>
+    <string name="we_deliver_desc">We deliver your laundry.</string>
 </resources>
